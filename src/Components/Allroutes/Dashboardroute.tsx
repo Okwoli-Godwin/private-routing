@@ -1,20 +1,28 @@
-import React from 'react'
-import { useRoutes } from 'react-router-dom'
-import Dashboardhome from '../Dashboard/Dashboardhome'
+import React from "react";
+import DashBoardHome from "../Dashboard/Dashboardhome";
+import { useNavigate, useRoutes } from "react-router-dom";
+import DashHeader from "../Dashboard/Dashheader";
+import styled from "styled-components";
+import PrivateRoutes from "../PrivateRoutes";
 
-const Dashboardroute = () => {
+const DashBoardRoutes = () => {
+	let element = useRoutes([
+		{
+			path: "/dashboard",
+			element: <DashBoardHome />,
+		},
+	]);
+	return (
+		<div>
+			<DashHeader />
+			<Wrapper>{element}</Wrapper>
+		</div>
+	);
+};
 
-    let element = useRoutes([
-        {
-            path: "/",
-            element: <Dashboardhome />
-        }
-    ])
-    return (
-        <>
-            
-        </>
-  )
-}
+export default DashBoardRoutes;
 
-export default Dashboardroute
+const Wrapper = styled.div`
+	display: flex;
+	justify-content: flex-end;
+`;
